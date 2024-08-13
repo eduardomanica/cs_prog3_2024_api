@@ -104,6 +104,9 @@ sw.get('/listjogadores', function (req, res, next) {
                     console.log('retornou 400 no listjogadores');
                     console.log(err);
 
+
+
+                    
                     res.status(400).send('{' + err + '}');
                 } else {
                     for(var i=0; i < result.rows.length; i++){
