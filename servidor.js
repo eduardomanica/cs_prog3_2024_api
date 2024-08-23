@@ -96,17 +96,13 @@ sw.get('/listjogadores', function (req, res, next) {
             res.status(400).send('{' + err + '}');
         } else {
 
-            var q = 'select nickname, senha, 0 as patentes, quantpontos, quantdinheiro, to_char(datacadastro, \'dd/mm/yyyy hh24:mm:ss\') as DataCadastro, to_char(data_ultimo_login, \'dd/mm/yyyy hh24:mm:ss\') as Data_ultimo_login, situacao from tb_jogador order by nickname asc';
+            var q = 'select nickname, senha, 0 as patentes, quantpontos, quantdinheiro, to_char(datacadastro, \'dd/mm/yyyy hh24:mm:ss\') as DataCadastro, to_char(data_ultimo_login, \'dd/mm/yyyy hh24:mm:ss\') as Data_ultimo_login, situacao, 0 as endereco from tb_jogador order by nickname asc';
                 //incluir todas as colunas de tb_endereco
             client.query(q, async function (err, result) {
                 
                 if (err) {
                     console.log('retornou 400 no listjogadores');
-                    console.log(err);
-
-
-
-                    
+                    console.log(err);         
                     res.status(400).send('{' + err + '}');
                 } else {
                     for(var i=0; i < result.rows.length; i++){
@@ -115,6 +111,11 @@ sw.get('/listjogadores', function (req, res, next) {
                             'tb_jogador_conquista_patente '+
                             'where nickname = $1', [result.rows[i].nickname])
                             result.rows[i].patentes = pj.rows;
+
+                            ej = await client.query('select codigo, complemento, cep from '+
+                            'tb_endereco '+
+                            'where nicknamejogador = $1', [result.rows[i].nickname])
+                            result.rows[i].endereco = ej.rows[0];
                         } catch (err) {
                             res.status(400).send('{'+err+'}');
                         }
