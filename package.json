@@ -1,0 +1,32 @@
+{
+  "name": "cs_prog3_2024_api",
+  "version": "1.0.0",
+  "description": "projeto para a disciplina de programação lll 2024",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardomanica/node_cs_api_lpbd_20212.git"
+  },
+  "keywords": [
+    "node",
+    "javascript",
+    "express",
+    "html",
+    "vue",
+    "postgres",
+    "pg"
+  ],
+  "author": "Eduardo Manica",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardomanica/node_cs_api_lpbd_20212/issues"
+  },
+  "homepage": "https://github.com/eduardomanica/node_cs_api_lpbd_20212#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "pg": "^8.7.3"
+  }
+}
