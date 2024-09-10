@@ -150,6 +150,10 @@ sw.post('/insertjogador', function (req, res, next) {
                          req.body.quantpontos, 
                          req.body.quantdinheiro, 
                          req.body.situacao == true ? "A" : "I"]
+
+
+
+                         
             }
             var q2 = {
                 text : 'insert into tb_endereco (complemento, cep, nicknamejogador) values ($1, $2, $3) returning codigo, complemento, cep;',
